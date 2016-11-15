@@ -25,7 +25,8 @@
   },
   "babel": {
     "presets": [
-      "react"
+      "react", 
+      "es2015"
     ]
   }
 }
