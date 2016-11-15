@@ -3,12 +3,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Canvas from './components/Canvas'
+import CanvasComponent from './components/CanvasComponent'
 
 class Main extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {iterations: 0}
+    this.state = {iterations: 1}
     this.increment = this.increment.bind(this)
     this.decrement = this.decrement.bind(this)
   }
@@ -34,7 +34,7 @@ class Main extends React.Component {
           <span>{this.state.iterations}</span>
           <button onClick={this.increment}>+</button>
         </div>
-        <Canvas />
+        <CanvasComponent iterations={this.state.iterations}/>
       </div>
     )
   }
