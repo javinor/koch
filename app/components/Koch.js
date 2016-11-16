@@ -13,11 +13,14 @@ class Koch extends React.Component {
   }
 
   getStartPosition() {
+    const radius = Math.min(this.props.width, this.props.height) * 0.45
+    const edgeLength = radius * Math.sqrt(3)
+
     return { 
-      x: this.props.width / 3,
-      y: this.props.height * 2 / 5,
+      x: this.props.width / 2 - edgeLength / 2,
+      y: this.props.height / 2 - (edgeLength * Math.sqrt(3) / 6),
       angle: Math.PI / 2,
-      length: this.props.width / Math.pow(3, this.props.iterations)
+      length: edgeLength / Math.pow(3, this.props.iterations - 1)
     }
   }
 

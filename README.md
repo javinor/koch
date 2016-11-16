@@ -8,7 +8,7 @@ open localhost:8080
 
 TODOs:
 - [ ] linting
-- [ ] test
+- [ ] tests
 - [ ] performance
-- [ ] additional react playground
+- [ ] styling
 - [ ] responsive
