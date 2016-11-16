@@ -4,6 +4,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import CanvasComponent from './components/CanvasComponent'
+import Koch from './components/Koch'
+
+const MIN_ITERATIONS = 1
+const MAX_ITERATIONS = 8
 
 class Main extends React.Component {
   constructor(props) {
@@ -21,20 +25,15 @@ class Main extends React.Component {
     this.setState({iterations: this.state.iterations - 1})
   }
 
-  componentDidUpdate() {
-    console.log('in comp did update')
-    console.log(this.state.iterations)
-  }
-
   render() {
     return (
       <div>
         <div>
-          <button onClick={this.decrement}>-</button>
+          <button onClick={this.decrement} disabled={this.state.iterations <= MIN_ITERATIONS}>-</button>
           <span>{this.state.iterations}</span>
-          <button onClick={this.increment}>+</button>
+          <button onClick={this.increment} disabled={this.state.iterations >= MAX_ITERATIONS}>+</button>
         </div>
-        <CanvasComponent iterations={this.state.iterations}/>
+        <Koch iterations={this.state.iterations}/>
       </div>
     )
   }
