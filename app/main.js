@@ -7,7 +7,7 @@ import CanvasComponent from './components/CanvasComponent'
 import Koch from './components/Koch'
 
 const MIN_ITERATIONS = 1
-const MAX_ITERATIONS = 8
+const MAX_ITERATIONS = 9
 
 class Main extends React.Component {
   constructor(props) {
