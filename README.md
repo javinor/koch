@@ -9,8 +9,9 @@ open localhost:8080
 ```
 
 TODOs:
-- [ ] linting
+- [ ] linting: eslint + react + jsx
 - [ ] tests
 - [ ] performance
-- [ ] styling
+- [ ] styles for components: best practices?
 - [ ] responsive
+- [ ] webpack: dev / prod environments, debugging
