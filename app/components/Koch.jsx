@@ -1,30 +1,13 @@
 'use strict'
 
-import React from 'react'
+const React = require('react')
 
-import CanvasComponent from './CanvasComponent'
-import {RULES, ACTIONS} from '../constants'
+const CanvasComponent = require('./CanvasComponent.jsx')
+const { RULES, ACTIONS } = require('../constants')
 
-class Koch extends React.Component {
-  constructor(props) {
-    super(props)
-    this.getStartPosition = this.getStartPosition.bind(this)
-    this.updateCanvas = this.updateCanvas.bind(this)
-  }
+class Koch extends React.PureComponent {
 
-  getStartPosition() {
-    const radius = Math.min(this.props.width, this.props.height) * 0.45
-    const edgeLength = radius * Math.sqrt(3)
-
-    return { 
-      x: this.props.width / 2 - edgeLength / 2,
-      y: this.props.height / 2 - (edgeLength * Math.sqrt(3) / 6),
-      angle: Math.PI / 2,
-      length: edgeLength / Math.pow(3, this.props.iterations - 1)
-    }
-  }
-
-  getNthPath(n) {
+  static getNthPath(n) {
     const paths = [RULES.start]
 
     while (paths.length < n) {
@@ -36,7 +19,25 @@ class Koch extends React.Component {
     return paths[n - 1]
   }
 
-  updateCanvas(ctx) {
+  constructor(props) {
+    super(props)
+    this.getStartPosition = this.getStartPosition.bind(this)
+    this.updateCanvas = this.updateCanvas.bind(this)
+  }
+
+  getStartPosition() {
+    const radius = Math.min(this.props.width, this.props.height) * 0.45
+    const edgeLength = radius * Math.sqrt(3)
+
+    return {
+      x: this.props.width / 2 - edgeLength / 2,
+      y: this.props.height / 2 - (edgeLength * Math.sqrt(3) / 6),
+      angle: Math.PI / 2,
+      length: edgeLength / Math.pow(3, this.props.iterations - 1)
+    }
+  }
+
+  handleUpdateCanvas(ctx) {
     const path = this.getNthPath(this.props.iterations)
     let pencil = this.getStartPosition()
 
@@ -56,19 +57,25 @@ class Koch extends React.Component {
 
   render() {
     return (
-      <CanvasComponent 
-        height={this.props.height}
-        width={this.props.width}
-        onCanvasReadyToUpdate={this.updateCanvas}
-      />
+        <CanvasComponent
+            height={this.props.height}
+            onCanvasReadyToUpdate={this.handleUpdateCanvas}
+            width={this.props.width}
+        />
     )
   }
 }
 
+Koch.propTypes = {
+  height: React.PropTypes.func,
+  iterations: React.PropTypes.func.isRequired,
+  strokeStyle: React.PropTypes.func,
+  width: React.PropTypes.func
+}
 Koch.defaultProps = {
   height: '300',
   width: '400',
   strokeStyle: '#000'
 }
 
-export default Koch
+module.export = Koch

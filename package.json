@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack -p",
     "clean": "rm -rf docs/",
+    "lint": "eslint .",
     "start": "webpack-dev-server"
   },
   "keywords": [],
@@ -20,14 +21,27 @@
     "babel-loader": "^6.2.7",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
+    "eslint": "^3.10.2",
+    "eslint-config-javi": "git+ssh://git@github.com/javinor/eslint-config-javi.git",
+    "eslint-plugin-react": "^6.7.1",
     "html-webpack-plugin": "^2.24.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   },
   "babel": {
     "presets": [
-      "react", 
+      "react",
       "es2015"
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "javi", 
+      "plugin:react/all"
+    ],
+    "plugins": [
+      "react"
     ]
   }
 }
