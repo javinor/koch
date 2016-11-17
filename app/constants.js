@@ -27,7 +27,7 @@ const ACTIONS = {
   })
 }
 
-module.export = {
+module.exports = {
   RULES,
   ACTIONS
 }

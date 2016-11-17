@@ -22,7 +22,7 @@ class Koch extends React.PureComponent {
   constructor(props) {
     super(props)
     this.getStartPosition = this.getStartPosition.bind(this)
-    this.updateCanvas = this.updateCanvas.bind(this)
+    this.handleUpdateCanvas = this.handleUpdateCanvas.bind(this)
   }
 
   getStartPosition() {
@@ -38,7 +38,7 @@ class Koch extends React.PureComponent {
   }
 
   handleUpdateCanvas(ctx) {
-    const path = this.getNthPath(this.props.iterations)
+    const path = Koch.getNthPath(this.props.iterations)
     let pencil = this.getStartPosition()
 
     ctx.clearRect(0, 0, this.props.width, this.props.height)
@@ -67,10 +67,10 @@ class Koch extends React.PureComponent {
 }
 
 Koch.propTypes = {
-  height: React.PropTypes.func,
-  iterations: React.PropTypes.func.isRequired,
-  strokeStyle: React.PropTypes.func,
-  width: React.PropTypes.func
+  height: React.PropTypes.number,
+  iterations: React.PropTypes.number,
+  strokeStyle: React.PropTypes.string,
+  width: React.PropTypes.number
 }
 Koch.defaultProps = {
   height: '300',
@@ -78,4 +78,4 @@ Koch.defaultProps = {
   strokeStyle: '#000'
 }
 
-module.export = Koch
+module.exports = Koch

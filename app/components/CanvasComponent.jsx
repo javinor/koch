@@ -4,7 +4,7 @@
 
 const React = require('react')
 
-class CanvasComponent extends React.PureComponent {
+class CanvasComponent extends React.Component {
 
   constructor(props) {
     super(props)
@@ -15,7 +15,9 @@ class CanvasComponent extends React.PureComponent {
   componentDidMount() {
     window.requestAnimationFrame(this.canvasReadyToUpdate)
   }
-
+  shouldComponentUpdate() { // eslint-disable-line class-methods-use-this
+    return true
+  }
   componentDidUpdate() {
     window.requestAnimationFrame(this.canvasReadyToUpdate)
   }
@@ -48,13 +50,13 @@ class CanvasComponent extends React.PureComponent {
 }
 
 CanvasComponent.propTypes = {
-  height: React.PropTypes.func,
+  height: React.PropTypes.number,
   onCanvasReadyToUpdate: React.PropTypes.func.isRequired,
-  width: React.PropTypes.func
+  width: React.PropTypes.number
 }
 CanvasComponent.defaultProps = {
   height: '300',
   width: '400'
 }
 
-module.export = CanvasComponent
+module.exports = CanvasComponent

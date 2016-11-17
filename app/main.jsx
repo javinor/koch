@@ -12,7 +12,7 @@ const MIN_ITERATIONS = 1
 const MAX_ITERATIONS = 9
 const RESIZE_DELAY = 500 // in millisec
 
-class Main extends React.PureComponent {
+class Main extends React.Component {
   constructor(props) {
     super(props)
     this.increment = this.increment.bind(this)
